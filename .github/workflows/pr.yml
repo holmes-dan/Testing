@@ -38,14 +38,14 @@ jobs:
 
   build-android:
     needs: install-and-test
-    uses: ./android-build.yml
+    uses: ./.github/workflows/android-build.yml
     with:
       environment: release
     secrets: inherit
 
   build-ios:
     needs: install-and-test
-    uses: ./ios-build.yml
+    uses: ./.github/workflows/ios-build.yml
     with:
       environment: release
     secrets: inherit
