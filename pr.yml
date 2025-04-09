@@ -8,7 +8,6 @@ on:
       - 'preprod'
 
 jobs:
-  #First job
   install-and-test:
     runs-on: ubuntu-latest
 
@@ -19,7 +18,7 @@ jobs:
       - name: Use Node.js 14
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 'latest'
           cache: 'yarn'
 
       - name: Install Node modules
@@ -36,3 +35,17 @@ jobs:
         with:
           coverage-file: ./jest-report.json
           base-coverage-file: ./jest-report.json
+
+  build-android:
+    needs: install-and-test
+    uses: ./.github/workflows/android-build.yml
+    with:
+      environment: release
+    secrets: inherit
+
+  build-ios:
+    needs: install-and-test
+    uses: ./.github/workflows/ios-build.yml
+    with:
+      environment: release
+    secrets: inherit
