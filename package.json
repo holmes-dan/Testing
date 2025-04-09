@@ -36,6 +36,9 @@
   "engines": {
     "node": ">=18"
   },
+  "jest": {
+    "preset": "react-native"
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
       "prettier src --write",
