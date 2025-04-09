@@ -30,11 +30,11 @@ jobs:
       - name: Unit & Integration tests
         run: yarn test
 
-      - name: Jest coverage report
-        uses: ArtiomTr/jest-coverage-report-action@v2.0.6
-        with:
-          coverage-file: ./coverage/coverage-final.json
-          base-coverage-file: ./coverage/coverage-final.json
+      # - name: Jest coverage report
+      #   uses: ArtiomTr/jest-coverage-report-action@v2.0.6
+      #   with:
+      #     coverage-file: ./coverage/coverage-final.json
+      #     base-coverage-file: ./coverage/coverage-final.json
 
   build-android:
     needs: install-and-test
