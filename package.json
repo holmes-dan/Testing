@@ -37,12 +37,7 @@
     "node": ">=18"
   },
   "jest": {
-    "preset": "react-native",
-    "collectCoverage": true,
-    "coverageReporters": [
-      "json"
-    ],
-    "coverageDirectory": "coverage"
+    "preset": "react-native"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json}": [
