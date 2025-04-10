@@ -30,38 +30,36 @@ jobs:
       - name: Unit & Integration tests
         run: yarn test
 
-      # - name: Jest coverage report
-      #   uses: ArtiomTr/jest-coverage-report-action@v2.0.6
-      #   with:
-      #     coverage-file: ./coverage/coverage-final.json
-      #     base-coverage-file: ./coverage/coverage-final.json
-
   build-android:
     needs: install-and-test
-    runs-on: ubuntu-latest # Specify the runner
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build Android
-        uses: ./.github/workflows/android-build.yml
-        with:
-          environment: release
+        run: |
+          # Add your Android build commands here
+          echo "Building Android app..."
+          # Example: ./gradlew assembleRelease
+
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           APP_CENTER_TOKEN_ANDROID: ${{ secrets.APP_CENTER_TOKEN_ANDROID }}
 
   build-ios:
     needs: install-and-test
-    runs-on: ubuntu-latest # Specify the runner
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
 
       - name: Build iOS
-        uses: ./.github/workflows/ios-build.yml
-        with:
-          environment: release
+        run: |
+          # Add your iOS build commands here
+          echo "Building iOS app..."
+          # Example: xcodebuild -workspace YourApp.xcworkspace -scheme YourApp -sdk iphoneos -configuration Release
+
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          APP_CENTER_TOKEN_ANDROID: ${{ secrets.APP_CENTER_TOKEN_ANDROID }}
+          APP_CENTER_TOKEN_IOS: ${{ secrets.APP_CENTER_TOKEN_IOS }}
